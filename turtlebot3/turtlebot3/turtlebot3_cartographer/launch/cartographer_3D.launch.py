@@ -31,7 +31,7 @@ def generate_launch_description():
     cartographer_config_dir = LaunchConfiguration('cartographer_config_dir', default=os.path.join(
                                                 turtlebot3_cartographer_prefix, 'config'))
     configuration_basename = LaunchConfiguration('configuration_basename',
-                                                default='turtlebot3_lds_2d.lua')
+                                                default='turtlebot3_lds_3d.lua')
 
     resolution = LaunchConfiguration('resolution', default='0.05')
     publish_period_sec = LaunchConfiguration('publish_period_sec', default='1.0')
@@ -62,7 +62,9 @@ def generate_launch_description():
             arguments=['-configuration_directory', cartographer_config_dir,
                     '-configuration_basename', configuration_basename],
             remappings = [
-            ('scan', 'scan')]
+            ('points2_1', 'horizontal_laser_3d'),
+            ('points2_2', 'horizontal_laser_3d_2'),
+            ]
             ),
 
         DeclareLaunchArgument(
