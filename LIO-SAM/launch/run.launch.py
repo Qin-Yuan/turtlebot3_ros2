@@ -31,6 +31,13 @@ def generate_launch_description():
             output='screen'
             ),
         Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            arguments='-0.064 0.0 0.121 0.0 0.0 0.0 base_link base_scan'.split(' '),
+            parameters=[parameter_file],
+            output='screen'
+            ),
+        Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
             name='robot_state_publisher',
